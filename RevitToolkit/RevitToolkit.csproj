@@ -12,12 +12,30 @@
       <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
    </PropertyGroup>
 
+   <PropertyGroup>
+      <Obfuscate>true</Obfuscate>
+      <!-- Default values. The following lines can be removed, unless they are changed. -->
+      <ConfuserReplaceOutput>true</ConfuserReplaceOutput>
+      <ConfuserProject>$(ProjectDir)Obfuscate\$(RevitVersion).crproj</ConfuserProject>
+   </PropertyGroup>
+   
    <ItemGroup>
+      <PackageReference Include="Confuser.MSBuild" Version="1.6.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="PolySharp" Version="1.15.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+   </ItemGroup>
+   
+   <ItemGroup>
+     <None Include="Obfuscate\2022.crproj" />
+     <None Include="Obfuscate\2023.crproj" />
+     <None Include="Obfuscate\2024.crproj" />
+     <None Include="Obfuscate\2025.crproj" />
    </ItemGroup>
 
 </Project>

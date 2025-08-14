@@ -1,0 +1,14 @@
+<project baseDir=".\bin\x64\Release.2025" outputDir=".\bin\x64\Release.2025\Confused" xmlns="http://confuser.codeplex.com">
+  <module path="RevitToolkit.dll">
+    <rule pattern="true" preset="maximum" inherit="false">
+      <protection id="anti ildasm" />
+      <protection id="anti tamper" />
+      <protection id="constants" />
+      <protection id="ctrl flow" />
+      <protection id="ref proxy" />
+      <protection id="resources" />
+      <protection id="rename" />
+      <protection id="anti debug" action="remove" />
+    </rule>
+  </module>
+</project>
