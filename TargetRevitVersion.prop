@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+   <ItemGroup>
+      <Reference Include="RevitAPI">
+         <HintPath>C:\Program Files\Autodesk\Revit $(RevitVersion)\RevitAPI.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+      <Reference Include="RevitAPIUI">
+         <HintPath>C:\Program Files\Autodesk\Revit $(RevitVersion)\RevitAPIUI.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+      <Reference Include="AdWindows">
+         <HintPath>C:\Program Files\Autodesk\Revit $(RevitVersion)\AdWindows.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+   </ItemGroup>
+   <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+      <Reference Include="PresentationCore" />
+      <Reference Include="PresentationFramework" />
+      <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+   </ItemGroup>
+   <PropertyGroup>
+      <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+      <GenerateDependencyFile>false</GenerateDependencyFile>
+      <AppDataLocalDir>$([System.Environment]::GetFolderPath(SpecialFolder.CommonApplicationData))</AppDataLocalDir>
+      <AddinDir>$(AppDataLocalDir)\Autodesk\ApplicationPlugins\</AddinDir>
+   </PropertyGroup>
+   <Choose>
+      <When Condition=" $(Configuration.StartsWith('Debug')) ">
+         <PropertyGroup>
+            <DebugSymbols>true</DebugSymbols>
+            <DebugType>full</DebugType>
+            <Optimize>false</Optimize>
+            <DefineConstants>DEBUG;TRACE</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <Otherwise>
+         <PropertyGroup>
+            <DebugType>pdbonly</DebugType>
+            <Optimize>true</Optimize>
+            <DefineConstants>RELEASE;TRACE</DefineConstants>
+         </PropertyGroup>
+      </Otherwise>
+   </Choose>
+   <Choose>
+      <When Condition=" $(Configuration.EndsWith('2022')) ">
+         <PropertyGroup>
+            <RevitVersion>2022</RevitVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);REVIT2022</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2023')) ">
+         <PropertyGroup>
+            <RevitVersion>2023</RevitVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);REVIT2023</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2024')) ">
+         <PropertyGroup>
+            <RevitVersion>2024</RevitVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);REVIT2024;REVIT2024_OR_GREATER</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2025')) ">
+         <PropertyGroup>
+            <RevitVersion>2025</RevitVersion>
+            <TargetFramework>net8.0-windows</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);REVIT2025;REVIT2024_OR_GREATER</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <Otherwise>
+         <PropertyGroup>
+            <RevitVersion>2024</RevitVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);REVIT2024</DefineConstants>
+         </PropertyGroup>
+      </Otherwise>
+   </Choose>
+</Project>

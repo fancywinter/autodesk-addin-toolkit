@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+   <ItemGroup>
+      <Reference Include="accoremgd">
+         <HintPath>C:\Program Files\Autodesk\AutoCAD $(AcadVersion)\accoremgd.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+      <Reference Include="Acdbmgd">
+         <HintPath>C:\Program Files\Autodesk\AutoCAD $(AcadVersion)\acdbmgd.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+      <Reference Include="Acmgd">
+         <HintPath>C:\Program Files\Autodesk\AutoCAD $(AcadVersion)\acmgd.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+      <Reference Include="AdWindows">
+         <HintPath>C:\Program Files\Autodesk\AutoCAD $(AcadVersion)\AdWindows.dll</HintPath>
+         <Private>False</Private>
+      </Reference>
+   </ItemGroup>
+   <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+      <Reference Include="PresentationCore" />
+      <Reference Include="PresentationFramework" />
+      <Reference Include="WindowsBase" />
+   </ItemGroup>
+   <PropertyGroup>
+      <AppDataLocalDir>$([System.Environment]::GetFolderPath(SpecialFolder.CommonApplicationData))</AppDataLocalDir>
+      <AddinDir>$(AppDataLocalDir)\Autodesk\ApplicationPlugins\</AddinDir>
+   </PropertyGroup>
+   <Choose>
+      <When Condition=" $(Configuration.StartsWith('Debug')) ">
+         <PropertyGroup>
+            <ConfigMode>Debug</ConfigMode>
+            <DebugSymbols>true</DebugSymbols>
+            <DebugType>full</DebugType>
+            <Optimize>false</Optimize>
+            <DefineConstants>DEBUG</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <Otherwise>
+         <PropertyGroup>
+            <ConfigMode>Release</ConfigMode>
+            <DebugType>pdbonly</DebugType>
+            <Optimize>true</Optimize>
+            <DefineConstants>RELEASE</DefineConstants>
+         </PropertyGroup>
+      </Otherwise>
+   </Choose>
+   <Choose>
+      <When Condition=" $(Configuration.EndsWith('2022')) ">
+         <PropertyGroup>
+            <AcadVersion>2022</AcadVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);ACAD2022</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2023')) ">
+         <PropertyGroup>
+            <AcadVersion>2023</AcadVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);ACAD2023</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2024')) ">
+         <PropertyGroup>
+            <AcadVersion>2024</AcadVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);ACAD2024</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <When Condition=" $(Configuration.EndsWith('2025')) ">
+         <PropertyGroup>
+            <AcadVersion>2025</AcadVersion>
+            <TargetFramework>net8.0-windows</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);ACAD2025</DefineConstants>
+         </PropertyGroup>
+      </When>
+      <Otherwise>
+         <PropertyGroup>
+            <AcadVersion>2024</AcadVersion>
+            <TargetFramework>net48</TargetFramework>
+            <Platforms>x64</Platforms>
+            <DefineConstants>$(DefineConstants);ACAD2024</DefineConstants>
+         </PropertyGroup>
+      </Otherwise>
+   </Choose>
+</Project>
