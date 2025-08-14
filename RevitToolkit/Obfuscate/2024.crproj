@@ -1,4 +1,4 @@
-<project baseDir=".\bin\x64\Release.2024" outputDir=".\bin\x64\Release.2024\Confused" xmlns="http://confuser.codeplex.com">
+﻿<project baseDir=".\bin\x64\Release.2024" outputDir=".\bin\x64\Release.2024\Confused" xmlns="http://confuser.codeplex.com">
   <module path="RevitToolkit.dll">
     <rule pattern="true" preset="maximum" inherit="false">
       <protection id="anti ildasm" />

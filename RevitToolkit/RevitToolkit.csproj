@@ -12,30 +12,50 @@
       <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
    </PropertyGroup>
 
+   <PropertyGroup Condition=" $(Configuration.StartsWith('Release')) ">
+      <!-- Generate Nuget package on release -->
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+   </PropertyGroup>
+
    <PropertyGroup>
+      <!-- ConfuserEx settings -->
       <Obfuscate>true</Obfuscate>
-      <!-- Default values. The following lines can be removed, unless they are changed. -->
       <ConfuserReplaceOutput>true</ConfuserReplaceOutput>
       <ConfuserProject>$(ProjectDir)Obfuscate\$(RevitVersion).crproj</ConfuserProject>
    </PropertyGroup>
-   
+
+   <PropertyGroup>
+      <!-- Nuget package unique identifier and version -->
+      <PackageId>RevitToolkit</PackageId>
+      <Version>1.0.0</Version>
+
+      <!-- License information -->
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+      <!-- Author, description, icon, documentation -->
+      <Authors>Tri Nguyen</Authors>
+      <Title>Revit Toolkit</Title>
+      <Description>Usefull library for Revit addin development.</Description>
+      <!-- <PackageReadmeFile>README.md</PackageReadmeFile> -->
+      <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+      <!-- Repository reference -->
+      <RepositoryUrl>https://github.com/fancywinter/autodesk-addin-toolkit</RepositoryUrl>
+
+      <!-- Tags describing the project for indexing and searching -->
+      <PackageTags>dotnet,autodesk,revit,api</PackageTags>
+   </PropertyGroup>
+
    <ItemGroup>
       <PackageReference Include="Confuser.MSBuild" Version="1.6.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+         <PrivateAssets>all</PrivateAssets>
+         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="PolySharp" Version="1.15.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+         <PrivateAssets>all</PrivateAssets>
+         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-   </ItemGroup>
-   
-   <ItemGroup>
-     <None Include="Obfuscate\2022.crproj" />
-     <None Include="Obfuscate\2023.crproj" />
-     <None Include="Obfuscate\2024.crproj" />
-     <None Include="Obfuscate\2025.crproj" />
    </ItemGroup>
 
 </Project>
